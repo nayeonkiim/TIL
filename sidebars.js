@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    JPA: ["JPA/JPA1","JPA/JPA2","JPA/JPA3"],
+    JPA: ["JPA/JPA1", "JPA/JPA2", "JPA/JPA3", "JPA/JPA4"],
     Test: [
       {
         JUnit5: ["Test/JUnit5/JUnit51"],
