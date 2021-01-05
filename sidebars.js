@@ -7,6 +7,11 @@ module.exports = {
         Mockito: ["Test/Mockito/Mockito1"],
       },
     ],
+    Database: [
+      {
+        DB이론: ["Database/DB 이론/DB1"]
+      }
+    ],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
