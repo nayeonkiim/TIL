@@ -9,7 +9,12 @@ module.exports = {
     ],
     Database: [
       {
-        DB이론: ["Database/DB 이론/DB1","Database/DB 이론/DB2"]
+        DB이론: ["Database/DB 이론/DB1", "Database/DB 이론/DB2"]
+      }
+    ],
+    Nodejs: [
+      {
+        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2"]
       }
     ],
     Guides: [
