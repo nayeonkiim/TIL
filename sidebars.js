@@ -17,11 +17,16 @@ module.exports = {
         basic: ["Node.js/basic/Node1", "Node.js/basic/Node2"]
       }
     ],
+    Algorithm: [
+      {
+        다시풀자: ["Algorithm/다시풀자/Back1"]
+      }
+    ],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
         Features: ["mdx"],
       }
-    ]
+    ],
   },
 };
