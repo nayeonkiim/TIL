@@ -2,6 +2,7 @@
 id: Node1
 title: nodeJS + Express 웹서버 설정
 ---
+_[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](https://www.inflearn.com/course/node-js-%EC%9B%B9%EA%B0%9C%EB%B0%9C)을 보고 학습한 내용을 정리한 것 입니다._
 
 ## NPM
 - npm은 Node Package Manager의 약자로 자바스크립트 패키지 매니저이다.
