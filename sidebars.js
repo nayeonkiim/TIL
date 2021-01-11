@@ -14,12 +14,13 @@ module.exports = {
     ],
     Nodejs: [
       {
-        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2"]
+        basic: ["Node.js/basic/Node1"]
       }
     ],
     Algorithm: [
       {
-        다시풀자: ["Algorithm/다시풀자/Back1"]
+        다시풀자_알고리즘: ["Algorithm/다시풀자알고리즘/Back1", "Algorithm/다시풀자알고리즘/Pro1"],
+        다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
     Guides: [
