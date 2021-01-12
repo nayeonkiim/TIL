@@ -80,7 +80,7 @@ _[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](http
 
     </html>
     ```
-    <img src="/img/34.JPG" width="500px" height="100px" title="table1" alt="상속매핑"></img><br/>
+    <img src="https://github.com/nayeonkiim/TIL/blob/master/static/img/34.JPG?raw=true" width="500px" height="100px" title="table1" alt="상속매핑"></img><br/>
 
 ## JSON 활용한 Ajax 처리
 - 브라우저 새로고침 없이 xml httpServlet request로 데이터를 보낼 수 있다.<br/><br/>
@@ -149,4 +149,4 @@ _[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](http
     });
     ```
 - 정상적으로 email 값이 나온다.
-    <img src="/img/35.JPG" width="200px" height="100px" title="table1" alt="상속매핑"></img><br/>
+    <img src="https://github.com/nayeonkiim/TIL/blob/master/static/img/35.JPG?raw=true" width="200px" height="100px" title="table1" alt="상속매핑"></img><br/>
