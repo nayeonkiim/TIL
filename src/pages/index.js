@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: '',
-    imageUrl: '/static/img/java-logo.jpeg',
+    imageUrl: 'img/java-logo.jpeg',
     description: (
       <>
       </>
@@ -17,7 +17,7 @@ const features = [
   },
   {
     title: '',
-    imageUrl: '/static/img/spring-logo.svg',
+    imageUrl: 'img/spring-logo.svg',
     description: (
       <>
       </>
