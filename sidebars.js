@@ -19,7 +19,7 @@ module.exports = {
     ],
     Algorithm: [
       {
-        다시풀자_알고리즘: ["Algorithm/다시풀자알고리즘/Back1", "Algorithm/다시풀자알고리즘/Pro1", "Algorithm/다시풀자알고리즘/test"],
+        다시풀자_알고리즘: ["Algorithm/다시풀자알고리즘/Back1", "Algorithm/다시풀자알고리즘/Pro1"],
         다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
