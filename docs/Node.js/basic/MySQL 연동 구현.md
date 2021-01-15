@@ -26,8 +26,10 @@ _[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](http
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
+  port     : 3306,
   user     : 'root',
-  password : '1111'
+  password : '1111',
+  database : 'pract'
 });
 
 connection.connect();
