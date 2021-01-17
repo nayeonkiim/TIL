@@ -93,7 +93,7 @@ passport.use(new LocalStrategy({
     - `return done(null, false, { message: 'Incorrect password.' });`
         - 실패 이유를 알려주는 추가적인 메세지 정보도 적을 수 있다.
         - 실패 시 redirect 되는 페이지에서 <%=message%> 를 통해 해당 정보를 출력할 수 있다.<br/><br/>
-        <img src="https://github.com/nayeonkiim/TIL/blob/master/docs/Node.js/basic/img/inuse.JPG" width="350px" height="200px" title="table1" alt="값타입"></img><br/> 
+        <img src="https://github.com/nayeonkiim/TIL/blob/master/docs/Node.js/basic/img/inuse.JPG?raw=true" width="350px" height="200px" title="table1" alt="값타입"></img><br/> 
 
 - 인증을 판별할 때 exception이 발생한 경우
     - `return done(err);`
