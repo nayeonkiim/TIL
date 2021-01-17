@@ -60,3 +60,23 @@ app.post('/ajax_send_email', function (req, res){
 - client로 부터 들어온 데이터의 name이 존재하는 경우 rows[0] 이 true
 - ajax 통신으로 값을 responseDate에 넣어 다시 client로 보내준다.
 
+- [쿼리 단순화 URL](https://github.com/mysqljs/mysql/#escaping-query-values)
+    - 첫 번째 코드를 두 번째 코드로 쿼리를 간단하게 만드는 방법
+
+    ```js
+    var sql= "INSERT INTO user (email,name,pw) VALUES (" + email + '","' + name + '","' +   passwd + '")"';
+    var query = connection.query(sql, function (err, row){
+        if(err) { throw err;}
+        console.log("ok db insert");
+    })
+    ```
+
+    ```js
+    var sql = {email : email, name : name, pw : passwd};
+    var query = connection.query('insert into user set ?', sql, function (err, row){
+        if(err) { throw err;}
+        console.log("ok db insert");
+    })
+    ```
+      
+    
