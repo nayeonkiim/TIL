@@ -83,6 +83,16 @@ passport.use(new LocalStrategy({
 - 비교과정에서 서버에 에러가 나면 첫번째 if문의 `done(err);`를 리턴한다.
 - `if (rows.length)` 의미는 이미 처리된 결과가 있는 경우로 이미 해당 email을 가진 회원이 존재하므로 `done(null, false, { message: 'your email is already used' })` 으로 실패의 의미인 false와 message를 넘겨준다.
 - err도 없고 email을 가진 회원도 없는 경우 마지막 else문으로 들어와서 쿼리를 통해 회원으로 등록을 시켜주고 `done(null, { 'email': email, 'id': rows.insertId })` 을 리턴한다.
+- +) 아이디와 비밀번호 이외의 이름과 같은 값도 함께 insert 하고 싶으면
+    - req.body.name, req.query.name 으로 해당 값을 불러와서 넣어주면 된다.
+    ```js
+    var paramName = req.body.name || req.query.name;
+
+    var sql = { email: email, pw: password, name: paramName };
+    var query = connection.query('insert into user set ?', sql, 
+    ...
+    ```
+
 
 ### 인증 콜백 -  done()
 - 인증이 유효한 경우
@@ -159,7 +169,7 @@ module.exports = router;
 
 ### 로그인 구현
 - 로그인 기능도 위와 유사하게 구현하면 된다.
-- ajax 통신 시 json으로 응답을 주기 위해선 **Custom Callback** 으로 구현해야 한다.
+-  페이지로 전달시 **AJax를 통해 JSON 형태로 응답**을 해줄때 **Custom Callback**을 사용한다. 
 - 위의 경우 redirect 기반이다.
 
 ```js
@@ -193,9 +203,13 @@ router.post('/', function (req, res, next) {
 });
 ```
 - client로 부터 넘어온 데이터가 user로 들어온다.
-- authenticate() 가 미들웨어로 사용되지 않고 경로 핸들러 내에서 호출된다.
+- authenticate() 가 미들웨어로 사용되지 않고 경로 핸들러 내에서 호출된다. -> 클로저를 통해 req, res 객체에 콜백 접근 가능해진다.
+- 인증에 실패하면 user가 false로 셋팅되고 exception이 발생하면 err가 셋팅된다.
+- `info` : strategy의 입증 콜백에 의해 제공받은 추가적인 사항을 포함하는 인수이다.
 - req.logIn() 처리 후 serializeUser, deserializeUser로 이어진다.
-- `(req, res, next);` : authentication에서 반환하는 메서드에 req, res, next 인자를 넣어주어 추가적인 처리를 한다.
+- `(req, res, next);` : authentication에서 반환하는 메서드에 req, res, next 인자를 넣어주어 추가적인 처리를 한다. -> 콜백<br/><br/>
+
+- +) view 부분은 [ajax 처리](http://localhost:3000/docs/Node.js/basic/Node2#json-%ED%99%9C%EC%9A%A9%ED%95%9C-ajax-%EC%B2%98%EB%A6%AC) 참고
 
 ### 로그아웃 구현
 ```js
