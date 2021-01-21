@@ -9,7 +9,8 @@ module.exports = {
     ],
     Database: [
       {
-        DB이론: ["Database/DB 이론/DB1", "Database/DB 이론/DB2", "Database/DB 이론/DB3"]
+        DB이론: ["Database/DB 이론/DB1", "Database/DB 이론/DB2"],
+        MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2"]
       }
     ],
     Nodejs: [
