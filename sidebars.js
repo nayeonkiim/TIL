@@ -10,10 +10,10 @@ module.exports = {
     Database: [
       {
         DB이론: ["Database/DB 이론/DB1", "Database/DB 이론/DB2"],
-        MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2"]
+        MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2", "Database/MySQL/MySQL3"]
       }
     ],
-    JavaScript: ["JavaScript/JS1"],
+    JavaScript: ["JavaScript/JS1", "JavaScript/JS2"],
     Nodejs: [
       {
         basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5"]
