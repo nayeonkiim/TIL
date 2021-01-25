@@ -10,7 +10,7 @@ module.exports = {
     Database: [
       {
         DB이론: ["Database/DB 이론/DB1", "Database/DB 이론/DB2"],
-        MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2", "Database/MySQL/MySQL3"]
+        MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2", "Database/MySQL/MySQL3", "Database/MySQL/MySQL4"]
       }
     ],
     JavaScript: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4"],
@@ -33,3 +33,4 @@ module.exports = {
     ],
   },
 };
+
