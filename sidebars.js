@@ -13,7 +13,7 @@ module.exports = {
         MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2", "Database/MySQL/MySQL3", "Database/MySQL/MySQL4"]
       }
     ],
-    JavaScript: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4"],
+    JavaScript: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4", "JavaScript/JS5"],
     Nodejs: [
       {
         basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5"]
