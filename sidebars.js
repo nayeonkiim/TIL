@@ -13,7 +13,12 @@ module.exports = {
         MySQL: ["Database/MySQL/MySQL1", "Database/MySQL/MySQL2", "Database/MySQL/MySQL3", "Database/MySQL/MySQL4", "Database/MySQL/MySQL5"]
       }
     ],
-    JavaScript: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4", "JavaScript/JS5", "JavaScript/JS6", "JavaScript/JS7", "JavaScript/JS8"],
+    JavaScript: [
+      {
+        ES5_이전: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4", "JavaScript/JS5", "JavaScript/JS6", "JavaScript/JS7", "JavaScript/JS8"],
+        ES6: ["JavaScript/ES6/es6-1", "JavaScript/ES6/es6-2", "JavaScript/ES6/es6-3", "JavaScript/ES6/es6-4"]
+      }
+    ],
     Nodejs: [
       {
         basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5"]
