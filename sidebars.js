@@ -16,7 +16,7 @@ module.exports = {
     JavaScript: [
       {
         ES5_이전: ["JavaScript/JS1", "JavaScript/JS2", "JavaScript/JS3", "JavaScript/JS4", "JavaScript/JS5", "JavaScript/JS6", "JavaScript/JS7", "JavaScript/JS8"],
-        ES6: ["JavaScript/ES6/es6-0", "JavaScript/ES6/es6-1", "JavaScript/ES6/es6-2", "JavaScript/ES6/es6-3", "JavaScript/ES6/es6-4", "JavaScript/ES6/es6-5", "JavaScript/ES6/es6-6"]
+        ES6: ["JavaScript/ES6/es6-0", "JavaScript/ES6/es6-1", "JavaScript/ES6/es6-2", "JavaScript/ES6/es6-3", "JavaScript/ES6/es6-4", "JavaScript/ES6/es6-5", "JavaScript/ES6/es6-6", "JavaScript/ES6/es6-7"]
       }
     ],
     Nodejs: [
