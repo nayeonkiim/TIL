@@ -55,8 +55,8 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + "/public/main.html")
 })
 ```
+- `__dirname` : file 명을 제외한 절대 경로
 - /로 get 요청 들어오면 설정된 파일을 보낸다.
-
 - html 파일에 js파일 포함된 경우
     - js 파일도 url 처리를 해줘야 한다.
     - js와 같은 static 파일을 서버에서 요청 받는데로 처리해 주면 편리해진다.

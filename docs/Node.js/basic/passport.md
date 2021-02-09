@@ -74,24 +74,27 @@ passport.use(new LocalStrategy({
 ));
 ```
 - passport와 LocalStrategy 사용을 위해 선언해준다.
-- passport.use() 함수에서 Strategy와 설정들을 정의한다.
-- `usernameField` 과 `passwordField` 는 어떤 폼 필드로 부터 아이디와 비밀번호를 전달받을 지 에 대한 설정
-- passReqToCallback 이 true일 경우 뒤의 콜백의 req 매개변수를 통해 express의 req 에 접근할 수 있게 된다.
-    - `function (req, email, pw, done) {`
-- 아이디와 비밀번호 값이 들어와서 함수가 실행되고<br/>
-위의 쿼리는 아이디값으로 사용된 이메일과 동일한 이메일을 db에서 찾아서 select 해준다.
-- 비교과정에서 서버에 에러가 나면 첫번째 if문의 `done(err);`를 리턴한다.
-- `if (rows.length)` 의미는 이미 처리된 결과가 있는 경우로 이미 해당 email을 가진 회원이 존재하므로 `done(null, false, { message: 'your email is already used' })` 으로 실패의 의미인 false와 message를 넘겨준다.
-- err도 없고 email을 가진 회원도 없는 경우 마지막 else문으로 들어와서 쿼리를 통해 회원으로 등록을 시켜주고 `done(null, { 'email': email, 'id': rows.insertId })` 을 리턴한다.
-- +) 아이디와 비밀번호 이외의 이름과 같은 값도 함께 insert 하고 싶으면
-    - req.body.name, req.query.name 으로 해당 값을 불러와서 넣어주면 된다.
-    ```js
-    var paramName = req.body.name || req.query.name;
+- passport.use() 
+    - 함수에서 Strategy와 설정들을 정의한다.
+    - `usernameField` 과 `passwordField` 는 어떤 폼 필드로 부터 아이디와 비밀번호를 전달받을 지 에 대한 설정
+    - passReqToCallback 이 true일 경우 뒤의 콜백의 req 매개변수를 통해 express의 req 에 접근할 수 있게 된다.<br/>
+    `function (req, email, pw, done) {`
+    - 아이디와 비밀번호 값이 들어와서 함수가 실행되고
+    위의 쿼리는 아이디값으로 사용된 이메일과 동일한 이메일을 db에서 찾아서 select 해준다.<br/>
+    `var query = connection.query('select * ~ )`
+    - 비교과정에서 서버에 에러가 나면 첫번째 if문의 `done(err);`를 리턴한다.
+    - `if (rows.length)` 의미는 이미 처리된 결과가 있는 경우로 이미 해당 email을 가진 회원이 존재하므로 `done(null, false, { message: 'your email is already used' })` 으로 실패의 의미인 false와 message를 넘겨준다.
+    - err도 없고 email을 가진 회원도 없는 경우 마지막 else문으로 들어와서 쿼리를 통해 회원으로 등록을 시켜주고 `done(null, { 'email': email, 'id': rows.insertId })` 을 리턴한다.
 
-    var sql = { email: email, pw: password, name: paramName };
-    var query = connection.query('insert into user set ?', sql, 
-    ...
-    ```
+    - +) 아이디와 비밀번호 이외의 이름과 같은 값도 함께 insert 하고 싶으면
+        - req.body.name, req.query.name 으로 해당 값을 불러와서 넣어주면 된다.
+        ```js
+        var paramName = req.body.name || req.query.name;
+
+        var sql = { email: email, pw: password, name: paramName };
+        var query = connection.query('insert into user set ?', sql, 
+        ...
+        ```
 
 
 ### 인증 콜백 -  done()

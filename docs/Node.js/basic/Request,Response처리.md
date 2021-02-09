@@ -27,6 +27,7 @@ _[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](http
 * app.js
     - post 방식인 경우 req.param('email') 처럼 url로 간 데이터를 가져다 쓸 수 없다.
     - **bodyParser** 필요
+        - `npm install body-parser --save` 로 body-parser install 하기
         - ```app.use(bodyParser.json())```
             - 클라이언트로부터 오는 응답이 json인 경우
         - ```app.use(bodyParser.urlencoded({ extended: true }))```

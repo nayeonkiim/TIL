@@ -13,10 +13,11 @@ _[Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해](http
 - 테이블 생성 
     ```sql
     create table user(
-    email varchar(255) not null primary key,
-    name varchar(50) not null,
-    pw varchar(100) not null
-    )
+        uid int not null primary key auto_increment,
+        email varchar(255) not null,
+        name varchar(50) not null,
+        pw varchar(100) not null
+        )
     ```
 - 데이터 추가 : `insert into user values ('adb@naver.com','haha', '1133')`
 
