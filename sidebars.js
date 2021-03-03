@@ -30,6 +30,7 @@ module.exports = {
         다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
+    DesignPatterns: ["Design Patterns/design1"],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
