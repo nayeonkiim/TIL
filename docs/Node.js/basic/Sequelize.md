@@ -14,8 +14,38 @@ title: Sequelize 사용하기
 - mysql2 : Mysql과 시퀄라이즈를 이어주는 드라이버
 - 패키지 설치를 완료하면 config, models, migrations, seeders 폴더가 생성 된다.
 
-- models 폴더 안에 index,js가 생성되는데, 이 파일은 models 폴더 내에 있는 파일들을 읽고, 그것들을 모델로 정의한다.
+### models 폴더 안의 index.js
+- models 폴더 안에 index.js가 생성되는데, 이 파일은 models 폴더 내에 있는 파일들을 읽고, 그것들을 모델로 정의한다.
 
+    ```js
+    const Sequelize = require('sequelize');
+    const User = require('./user');
+    const Comment = require('./comment');
+
+    const env = process.env.NODE_ENV || 'development';
+    const config = require('../config/config')[env];
+    const db = {};
+
+    const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+    db.sequelize = sequelize;
+    db.Sequelize = Sequelize;
+
+    db.User = User;
+    db.Comment = Comment;
+
+    User.init(sequelize);
+    Comment.init(sequelize);
+
+    User.associate(db);
+    Comment.associate(db);
+
+    module.exports = db;
+
+    ```
+    - `const config = require('../config/config')[env];`
+        - config 폴더 안의 config.json 코드 중 development에 해당하는 정보를 사용하여 Sequelize를 통해 MySQL 연결 객체를 생성한다.
+        - 연결 객체를 나중에 재사용 하기 위해 db.sequelize에 넣어둔다.
 
 ## 1.Mysql 연결하기
 - app.js(main) 에 익스프레스와 시퀄라이즈 연결 코드를 작성한다.
