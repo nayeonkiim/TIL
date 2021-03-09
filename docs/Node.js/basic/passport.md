@@ -132,15 +132,18 @@ module.exports = router;
 - **serializeUser** 
     - 회원가입 성공 시 실행되었던<br/>
     done(null, { 'email': email, 'id': rows.insertId }) 에서 객체형태의 값을 전달받아 세션(**req.session.passport.user**)에 저장한다.
-
-    ```js
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-    });
-    ```
+    - done(null, user.id)
+        - 첫 번째 인수는 에러 발생 시 사용하는 것이고, 두 번째 인수는 저장하고 싶은 데이터를 넣는다.
+        - 즉, 사용자의 아이디만 저장하라고 명령한 것이다.
+    
+        ```js
+        passport.serializeUser(function(user, done) {
+            done(null, user.id);
+        });
+        ```
 - **deserializeUser**
-    - 실제 서버로 들어오는 요청마다 세션 정보를 실제 DB의 데이터와 비교한다.
-    - 해당하는 유저 정보가 있으면 done의 두번째 인자를 req.user에 저장하고 요청을 처리할 때 유저의 정보를 **req.user**를 통해서 넘겨준다.
+    - 실제 서버로 들어오는 **요청마다** 세션 정보를 실제 DB의 데이터와 비교한다.
+    - 해당하는 유저 정보가 있으면 done의 두번째 인자를 **req.user**에 저장하고 요청을 처리할 때 유저의 정보를 **req.user**를 통해서 넘겨준다.
     - User를 통해 findById를 해주는 세션 정보를 실제 DB의 데이터와 비교하려면 db에 대한 정의를 해줘야한다. 아래의 코드는 mongoDB의 경우이다.
     - **serializeUser 에서 done으로 넘겨주는 두번째 인자(user.id)가 deserializeUser의 첫번째 매개변수(id)로 전달된다.**<br/><br/>
     ```js
@@ -169,6 +172,9 @@ module.exports = router;
         - 위에서 인증 성공시 main 으로 redirect를 했으므로 (`successRedirect: '/main'`)<br/>
         main.js에서 `console.log('main js loaded', req.user)` 로 콘솔에 출력
         - `[main js loaded 20]` : id(20)가 출력되는 것을 알 수 있다.
+- 정리
+    - serializeUser 는 사용자 정보를 세션에 저장하는 것
+    - deserializeUser 는 세션에 저장한 정보를 통해 사용자 정보 객체 불러오는 것이다.
 
 ### 로그인 구현
 - 로그인 기능도 위와 유사하게 구현하면 된다.
@@ -230,7 +236,60 @@ module.exports = router;
 ```
 - 세션 정보가 지워지고 login으로 redirect 된다.<br/><br/>
 
+## 로그인과 로그인 된 이후 과정
+- 로그인 
+1. 로그인 요청이 들어옴
+2. 라우터에서 **passport.authenticate** 메서드 호출
+3. 로그인 전략 수행
+4. 로그인 성공 시 사용자 정보 객체와 함께 **req.login** 호출
+5. req.login 메서드가 **passport.serializeUser** 호출
+6. **req.session** 에 사용자 아이디만 저장
+7. 로그인 완료
 
-- 참고)
-    - [passport document](http://www.passportjs.org/docs/authenticate/)
-    - https://www.zerocho.com/category/NodeJS/post/57b7101ecfbef617003bf457
+- 로그인 된 이후 과정
+1. 요청이 들어옴
+2. 라우터에 요청이 도달하기 전에 **passport.session** 미들웨어가 **passport.deserializeUser** 메서드 호출
+3. req.session 에 저장된 아이디로 데이터베이스에서 사용자 조회
+4. 조회된 사용자 정보를 **req.user**에 저장
+5. 라우터에서 req.user 객체 사용 가능
+
+
+## 권한 설정
+- 로그인한 사용자는 회원가입과 로그인 라우터에 접근하지 못하도록 한다.
+- 로그인이 안된 사용자 역시 로그아웃 라우터에 접근하지 못하도록 한다.
+- 위와 같은 설정을 위해 권한 설정이 필요하다. 접근 권한을 제어하는 미들웨어가 필요하다.
+    - Passport에서 req 객체에 추가해주는 **isAuthenticated**메서드
+    - 로그인 중이면 req.isAuthenticated() 가 true
+    - 그렇지 않으면 req.isAuthenticated() 가 false
+
+    ```js
+    //middlewares.js
+    exports.isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.status(403).send('로그인 필요');
+        }
+    };
+
+    exports.isNotLoggedIn = (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            next();
+        } else {
+            const message = encodeURIComponent('로그인 한 상태입니다.');
+            res.redirect(`/?error=${message}`);
+        }
+    }
+    ```
+    - 사용
+        - 로그인이 안되었을 때만 로그인 라우터에 접근 가능하다.
+        ```js
+        router.post('/login', isNotLoggedIn, (req, res, next) => {
+            ...
+        }
+        ```
+
+### 참고)
+- [passport document](http://www.passportjs.org/docs/authenticate/)
+- https://www.zerocho.com/category/NodeJS/post/57b7101ecfbef617003bf457
+- [Node.js 교과서](http://www.yes24.com/Product/Goods/62597864)
