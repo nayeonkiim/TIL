@@ -134,6 +134,30 @@ title: PASSPORT
     - 기존에 같은 이메일로 가입한 사용자가 있는지 조회한 뒤 (User.findOne), 있다면 회원가입 페이지로 되돌려보낸다.
     - 없다면 비밀번호를 bcrypt 모듈로 암호화해서 저장한다.
     - 프로미스를 지원하는 함수이므로 await을 사용했다.
+        ```js
+        const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+
+        router.post('/join', isNotLoggedIn, async (req, res, next) => {
+            const { email, nick, password } = req.body;
+            try {
+                const exUser = await User.findOne({ where: { email } });
+                if (exUser) {
+                return res.redirect('/join?error=exist');
+                }
+                const hash = await bcrypt.hash(password, 12);
+                await User.create({
+                email,
+                nick,
+                password: hash,
+                });
+                return res.redirect('/');
+            } catch (error) {
+                console.error(error);
+                return next(error);
+            }
+        });
+        ```
+
 2. 로그인 라우터(/login)
     - isNotLoggedIn : 로그인이 안된 사용자만 접근 가능하다.
     - 로그인 요청이 들어오면 **passport.authenticate('local')** 미들웨어가 로컬 로그인 전략을 수행한다.
@@ -142,62 +166,42 @@ title: PASSPORT
         - 콜백 함수의 첫 번째 매개변수 **authError 값이 있다면 실패**한 것이다.
         - **두 번째 매개변수 값이 있다면 성공**한 것이고 **req.login** 메서드를 호출한다. 
     - Passport 는 req 객체에 login과 logout 메서드를 추가한다. **req.login은 passport.serializeUser 를 호출**한다.
+
+        ```js
+        router.post('/login', isNotLoggedIn, (req, res, next) => {
+            passport.authenticate('local', (authError, user, info) => {
+                if (authError) {
+                    console.error(authError);
+                    return next(authError);
+                }
+                if (!user) {
+                    return res.redirect(`/?loginError=${info.message}`);
+                }
+
+                return req.login(user, (loginError) => {
+                    
+                    if (loginError) {
+                        console.error(loginError);
+                        return next(loginError);
+                    }
+                    return res.redirect('/');
+                });
+            })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
+        });
+        ```
+
 3. 로그아웃 라우터(/logout)
     - req.logout 메서드는 req.user 객체를 제거하고, res.session.destroy는 req.session 객체의 내용을 제거한다.
     - 세션 정보를 지운 후 메인 페이지로 되돌아 간다.<br/><br/>
-    ```java
-    // routes/auth.js
-    const passport = require('passport');
-    const bcrypt = require('bcrypt');
-    const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-
-    router.post('/join', isNotLoggedIn, async (req, res, next) => {
-    const { email, nick, password } = req.body;
-    try {
-        const exUser = await User.findOne({ where: { email } });
-        if (exUser) {
-        return res.redirect('/join?error=exist');
-        }
-        const hash = await bcrypt.hash(password, 12);
-        await User.create({
-        email,
-        nick,
-        password: hash,
+    
+        ```js
+        // routes/auth.js
+        router.get('/logout', isLoggedIn, (req, res) => {
+            req.logout();
+            req.session.destroy();
+            res.redirect('/');
         });
-        return res.redirect('/');
-    } catch (error) {
-        console.error(error);
-        return next(error);
-    }
-    });
-
-    router.post('/login', isNotLoggedIn, (req, res, next) => {
-    passport.authenticate('local', (authError, user, info) => {
-        if (authError) {
-        console.error(authError);
-        return next(authError);
-        }
-        if (!user) {
-        return res.redirect(`/?loginError=${info.message}`);
-        }
-        return req.login(user, (loginError) => {
-        if (loginError) {
-            console.error(loginError);
-            return next(loginError);
-        }
-        return res.redirect('/');
-        });
-    })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
-    });
-
-    router.get('/logout', isLoggedIn, (req, res) => {
-    req.logout();
-    req.session.destroy();
-    res.redirect('/');
-    });
-
-    ```
-
+        ```
 
 ### 로그인 전략 구현
 1. LocalStrategy 생성자의 첫 번째 인수
@@ -217,27 +221,27 @@ title: PASSPORT
     const User = require('../models/user');
 
     module.exports = () => {
-    passport.use(new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-    }, async (email, password, done) => {
-        try {
-        const exUser = await User.findOne({ where: { email } });
-        if (exUser) {
-            const result = await bcrypt.compare(password, exUser.password);
-            if (result) {
-            done(null, exUser);
-            } else {
-            done(null, false, { message: '비밀번호가 일치하지 않습니다.' });
+        passport.use(new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+        }, async (email, password, done) => {
+            try {
+                const exUser = await User.findOne({ where: { email } });
+                if (exUser) {
+                    const result = await bcrypt.compare(password, exUser.password);
+                    if (result) {
+                    done(null, exUser);
+                    } else {
+                    done(null, false, { message: '비밀번호가 일치하지 않습니다.' });
+                    }
+                } else {
+                    done(null, false, { message: '가입되지 않은 회원입니다.' });
+                }
+            } catch (error) {
+                console.error(error);
+                done(error);
             }
-        } else {
-            done(null, false, { message: '가입되지 않은 회원입니다.' });
-        }
-        } catch (error) {
-        console.error(error);
-        done(error);
-        }
-    }));
+        }));
     };
     ```
 
