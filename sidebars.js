@@ -21,7 +21,8 @@ module.exports = {
     ],
     Nodejs: [
       {
-        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5", "Node.js/basic/Node6"]
+        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5", "Node.js/basic/Node6"],
+        API서버: ["Node.js/API서버/API1"]
       }
     ],
     Algorithm: [
