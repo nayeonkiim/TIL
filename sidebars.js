@@ -31,7 +31,6 @@ module.exports = {
         다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
-    DesignPatterns: ["DesignPatterns/design1", "DesignPatterns/design2", "DesignPatterns/design3", "DesignPatterns/design4", "DesignPatterns/design5", "DesignPatterns/design6", "DesignPatterns/design7"],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
