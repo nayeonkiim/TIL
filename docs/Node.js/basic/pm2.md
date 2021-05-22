@@ -12,6 +12,12 @@ title: pm2
 - 클러스터 모드를 지원한다.
 - 서버 인스턴스들에 대한 로드 밸런싱과 Node.js의 Scale Up 또는 Scale Down 에 도움을 준다.
 
+## pm2 설치 및 실행하기
+- 설치 : `npm install pm2 -g`
+- 실행 : `pm2 start app.js` 
+
+![img](../basic/img/pm2.JPG)
+
 ## 클러스터 모드
 - Node.js 는 싱글 스레드로, 단일 CPU 코어에서 실행되기 때문에 CPU의 멀티코어 시스템을 사용할 수 없다.
 - 클러스터 모듈는 단일 프로세스를 멀티 프로세스로 늘릴 수 있는 방법을 제공해 준다.
