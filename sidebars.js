@@ -21,7 +21,7 @@ module.exports = {
     ],
     Nodejs: [
       {
-        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5", "Node.js/basic/Node6"],
+        basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5", "Node.js/basic/Node6", "Node.js/basic/Node7"],
         API서버: ["Node.js/API서버/API1", "Node.js/API서버/API2"]
       }
     ],
@@ -31,6 +31,7 @@ module.exports = {
         다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
+    AWS: ["AWS/AWS1"],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
