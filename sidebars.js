@@ -37,7 +37,7 @@ module.exports = {
       }
     ],
     AWS: ["AWS/AWS1"],
-    DesignPattern: ["DesignPattern/design1", "DesignPattern/design2", "DesignPattern/design3", "DesignPattern/design4", "DesignPattern/design5"],
+    DesignPattern: ["DesignPattern/design1", "DesignPattern/design2", "DesignPattern/design3", "DesignPattern/design4", "DesignPattern/design5", "DesignPattern/design6"],
     Guides: [
       {
         Docusaurus: ["doc1", "doc2", "doc3"],
