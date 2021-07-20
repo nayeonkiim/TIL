@@ -5,6 +5,21 @@ sidebar_label: Style Guide
 slug: /
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="apple"
+  values={[
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Banana', value: 'banana'},
+  ]}>
+  <TabItem value="apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana">This is a banana 🍌</TabItem>
+</Tabs>
+
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
 
 ## Markdown Syntax
@@ -201,3 +216,47 @@ This is a caution
 This is a warning
 
 :::
+
+-----
+## Add title
+```jsx title="/src/components/HelloCodeTitle.js"
+function HelloCodeTitle(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+## Line highlighting
+```jsx {3}
+function HighlightSomeText(highlight) {
+  if (highlight) {
+    return 'This text is highlighted!';
+  }
+
+  return 'Nothing highlighted';
+}
+```
+
+## Highlighting with comments
+
+You can also use comments with highlight-next-line, highlight-start, and highlight-end to select which lines are highlighted.
+
+```jsx
+function HighlightSomeText(highlight) {
+  if (highlight) {
+    // highlight-next-line
+    return 'This text is highlighted!';
+  }
+
+  return 'Nothing highlighted';
+}
+
+function HighlightMoreText(highlight) {
+  // highlight-start
+  if (highlight) {
+    return 'This range is highlighted!';
+  }
+  // highlight-end
+
+  return 'Nothing highlighted';
+}
+```
