@@ -1,14 +1,15 @@
 module.exports = {
   title: '김나연',
   tagline: '백엔드 프로그래머를 희망하며 하루 공부 내용을 정리하는 공간입니다.☀',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://nayeonkiim-TIL.netlify.app/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'nayeonkiim', // Usually your GitHub org/user name.
+  projectName: 'TIL', // Usually your repo name.
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
       title: 'Nayeonkiim"s TIL ☀',
       logo: {
