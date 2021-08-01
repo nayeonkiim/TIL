@@ -3,7 +3,7 @@ module.exports = {
     JPA: ["JPA/JPA1", "JPA/JPA2", "JPA/JPA3", "JPA/JPA4", "JPA/JPA5", "JPA/JPA6", "JPA/JPA7", "JPA/JPA8", "JPA/JPA9", "JPA/JPA10", "JPA/JPA11", "JPA/JPA12"],
     Spring: [
       {
-        MVC: ["Spring/MVC/MVC1", "Spring/MVC/MVC2", "Spring/MVC/MVC3", "Spring/MVC/MVC4", "Spring/MVC/MVC5"]
+        MVC: ["Spring/MVC/MVC1", "Spring/MVC/MVC2", "Spring/MVC/MVC3", "Spring/MVC/MVC4", "Spring/MVC/MVC5", "Spring/MVC/MVC6"]
       }
     ],
     Test: [
