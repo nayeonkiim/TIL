@@ -1,16 +1,11 @@
 module.exports = {
   docs: {
-    JPA: ["JPA/JPA1", "JPA/JPA2", "JPA/JPA3", "JPA/JPA4", "JPA/JPA5", "JPA/JPA6", "JPA/JPA7", "JPA/JPA8", "JPA/JPA9", "JPA/JPA10", "JPA/JPA11", "JPA/JPA12"],
+    JPA: ["JPA/JPA1", "JPA/JPA2", "JPA/JPA3", "JPA/JPA4", "JPA/JPA5", "JPA/JPA6", "JPA/JPA7", "JPA/JPA8", "JPA/JPA9", "JPA/JPA10", "JPA/JPA11", "JPA/JPA12", "JPA/JPA13"],
     Spring: [
       {
-        MVC: ["Spring/MVC/MVC1", "Spring/MVC/MVC2", "Spring/MVC/MVC3", "Spring/MVC/MVC4", "Spring/MVC/MVC5", "Spring/MVC/MVC6", "Spring/MVC/MVC7", "Spring/MVC/MVC8"]
+        MVC: ["Spring/MVC/MVC1", "Spring/MVC/MVC2", "Spring/MVC/MVC3", "Spring/MVC/MVC4", "Spring/MVC/MVC5", "Spring/MVC/MVC6", "Spring/MVC/MVC7", "Spring/MVC/MVC8"],
+        Others : ["Spring/Others/Others1"]
       }
-    ],
-    Test: [
-      {
-        JUnit5: ["Test/JUnit5/JUnit51"],
-        Mockito: ["Test/Mockito/Mockito1"],
-      },
     ],
     Database: [
       {
@@ -28,12 +23,6 @@ module.exports = {
       {
         basic: ["Node.js/basic/Node1", "Node.js/basic/Node2", "Node.js/basic/Node3", "Node.js/basic/Node4", "Node.js/basic/Node5", "Node.js/basic/Node6", "Node.js/basic/Node7"],
         API서버: ["Node.js/API서버/API1", "Node.js/API서버/API2"]
-      }
-    ],
-    Algorithm: [
-      {
-        다시풀자_알고리즘: ["Algorithm/다시풀자알고리즘/Back1", "Algorithm/다시풀자알고리즘/Pro1"],
-        다시풀자_구현: ["Algorithm/다시풀자구현/implement1"],
       }
     ],
     AWS: ["AWS/AWS1"],
