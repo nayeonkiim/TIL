@@ -57,7 +57,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/')}>
+              to={useBaseUrl('docs/JPA/JPA1')}>
               Let's study!
             </Link>
           </div>

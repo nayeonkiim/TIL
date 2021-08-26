@@ -18,8 +18,8 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
+          to: 'docs/JPA/JPA1',
+          activeBasePath: 'docs/JPA/JPA1',
           label: 'Docs',
           position: 'left',
         },
@@ -39,12 +39,8 @@ module.exports = {
           items: [
             {
               label: 'Style Guide',
-              to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
-            },
+              to: 'docs/JPA/JPA1',
+            }
           ],
         },
         {
