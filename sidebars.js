@@ -4,7 +4,7 @@ module.exports = {
     Spring: [
       {
         MVC: ["Spring/MVC/MVC1", "Spring/MVC/MVC2", "Spring/MVC/MVC3", "Spring/MVC/MVC4", "Spring/MVC/MVC5", "Spring/MVC/MVC6", "Spring/MVC/MVC7", "Spring/MVC/MVC8"],
-        Others : ["Spring/Others/Others1"]
+        Others : ["Spring/Others/Others1", "Spring/Others/Others2"]
       }
     ],
     Database: [
