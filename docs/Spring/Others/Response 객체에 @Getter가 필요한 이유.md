@@ -6,6 +6,8 @@ title: Response 객체에 @Getter가 필요한 이유
 <p>
 프로젝트를 진행하던 중 Postman 을 통해 api 요청을 했는데 아래와 같은 에러가 발생했다.
 </p>
+
+
 ![img](./img/1.png)
 
 `DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acceptable representation]` 의 에러도 떴다! <br/><br/>
